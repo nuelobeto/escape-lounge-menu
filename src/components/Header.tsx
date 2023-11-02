@@ -34,8 +34,6 @@ const Header = ({ subCategories }: HeaderProps) => {
     }
   }, []);
 
-  console.log(searchQuery);
-
   return (
     <>
       <header className="w-full">
