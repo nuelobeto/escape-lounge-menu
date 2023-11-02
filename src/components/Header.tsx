@@ -34,6 +34,19 @@ const Header = ({ subCategories }: HeaderProps) => {
     }
   }, []);
 
+  const autoScroll = () => {
+    setTimeout(() => {
+      const activeLink = document.getElementById(activeSubCategory);
+      if (activeLink) {
+        activeLink.scrollIntoView({ behavior: "smooth", inline: "center" });
+      }
+    }, 1000);
+  };
+
+  useEffect(() => {
+    autoScroll();
+  }, [activeSubCategory]);
+
   return (
     <>
       <header className="w-full">
@@ -85,8 +98,9 @@ const Header = ({ subCategories }: HeaderProps) => {
             {subCategories.map((subCategory, index) => (
               <a
                 key={index}
+                id={subCategory}
                 href={`#${subCategory}`}
-                className={`min-w-fit py-1 px-4 rounded-lg font-semibold border border-sky-700 ${
+                className={`cat-link min-w-fit py-1 px-4 rounded-lg font-semibold border border-sky-700 ${
                   activeSubCategory === subCategory
                     ? "bg-sky-700 text-white"
                     : "bg-none text-sky-700"
