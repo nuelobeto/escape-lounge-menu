@@ -1,14 +1,9 @@
 import { useState } from "react";
 import MenuModal from "./MenuModal";
+import { MenuItemT, SubCategoryT } from "../types/types";
 
 type SubCategoryCardProps = {
-  subCategory: {
-    category: string;
-    subCategory: string;
-    title: string;
-    description: string;
-    price: string;
-  }[];
+  subCategory: SubCategoryT[];
 };
 
 const SubCategoryCard = ({ subCategory }: SubCategoryCardProps) => {
@@ -18,11 +13,7 @@ const SubCategoryCard = ({ subCategory }: SubCategoryCardProps) => {
     ),
   ];
   const [openMenuModal, setOpenMenuModal] = useState(false);
-  const [item, setItem] = useState<{
-    title: string;
-    description: string;
-    price: string;
-  } | null>(null);
+  const [item, setItem] = useState<MenuItemT | null>(null);
 
   const handleSelectItem = (item: {
     title: string;

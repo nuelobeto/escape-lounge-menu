@@ -1,13 +1,10 @@
+import { MenuItemT } from "../types/types";
 import ModalWrapper from "./ModalWrapper";
 
 type MenuModalProps = {
   openMenuModal: boolean;
   setOpenMenuModal: React.Dispatch<React.SetStateAction<boolean>>;
-  item: {
-    title: string;
-    description: string;
-    price: string;
-  } | null;
+  item: MenuItemT | null;
 };
 
 const MenuModal = ({
