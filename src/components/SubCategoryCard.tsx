@@ -1,34 +1,61 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import MenuModal from "./MenuModal";
 import { MenuItemT, SubCategoryT } from "../types/types";
+import useGlobalStates from "../store/useGlobalStates";
 
 type SubCategoryCardProps = {
   subCategory: SubCategoryT[];
 };
 
 const SubCategoryCard = ({ subCategory }: SubCategoryCardProps) => {
-  const heading = [
-    ...new Set(
-      subCategory.map((item: { subCategory: any }) => item.subCategory)
-    ),
-  ];
+  const { setActiveCategory } = useGlobalStates((state) => state);
+  const heading = [...new Set(subCategory.map((item) => item.subCategory))];
   const [openMenuModal, setOpenMenuModal] = useState(false);
   const [item, setItem] = useState<MenuItemT | null>(null);
+  const elementRef = useRef<HTMLDivElement | null>(null);
 
-  const handleSelectItem = (item: {
-    title: string;
-    description: string;
-    price: string;
-  }) => {
+  const handleSelectItem = (item: MenuItemT) => {
     setOpenMenuModal(true);
     setItem(item);
   };
+
+  const handleIntersection: IntersectionObserverCallback = (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        if (elementRef.current) {
+          const id = elementRef.current?.getAttribute("id");
+          if (id) {
+            setActiveCategory(id);
+          }
+        }
+      }
+    });
+  };
+
+  useEffect(() => {
+    const options: IntersectionObserverInit = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.5,
+    };
+
+    const observer = new IntersectionObserver(handleIntersection, options);
+
+    if (elementRef.current) {
+      observer.observe(elementRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   return (
     <>
       <div
         id={heading[0]}
         className="sub-category flex flex-col gap-6 cursor-pointer"
+        ref={elementRef}
       >
         <h2 className="text-center p-1 rounded-lg bg-sky-700/10 text-[20px] font-bold text-sky-700">
           {heading[0].toUpperCase()}
