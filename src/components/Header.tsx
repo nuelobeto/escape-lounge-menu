@@ -36,7 +36,7 @@ const Header = ({ subCategories }: HeaderProps) => {
 
   const autoScroll = () => {
     setTimeout(() => {
-      const activeLink = document.getElementById(activeSubCategory);
+      const activeLink = document.getElementById(`${activeSubCategory}-link`);
       if (activeLink) {
         activeLink.scrollIntoView({ behavior: "smooth", inline: "center" });
       }
@@ -98,7 +98,7 @@ const Header = ({ subCategories }: HeaderProps) => {
             {subCategories.map((subCategory, index) => (
               <a
                 key={index}
-                id={subCategory}
+                id={`${subCategory}-link`}
                 href={`#${subCategory}`}
                 className={`cat-link min-w-fit py-1 px-4 rounded-lg font-semibold border border-sky-700 ${
                   activeSubCategory === subCategory
