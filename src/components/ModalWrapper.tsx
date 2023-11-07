@@ -25,25 +25,29 @@ const ModalWrapper = ({
       onClick={() => setIsOpen(false)}
     >
       <div
-        className={`absolute w-full bg-white rounded-t-3xl bottom-0 left-0 transition duration-[0.4s] ${
-          isOpen ? " translate-y-0" : "t translate-y-[100%]"
+        className={`absolute w-full bg-neutral-950 rounded-t-3xl bottom-0 left-0 transition duration-[0.4s] ${
+          isOpen ? " translate-y-0" : "translate-y-[100%]"
         }`}
         onClick={(e) => handlePropagation(e)}
       >
         <div
-          className={`p-4 flex items-center rounded-t-3xl bg-gray-100 border-b-2 border-gray-200 ${
+          className={`p-4 flex items-center rounded-t-3xl border-b-2 border-neutral-900 ${
             title ? "justify-between" : "justify-end"
           }`}
         >
-          {title && <p className="text-[18px] font-semibold">{title}</p>}
+          {title && (
+            <p className="text-[18px] font-semibold text-neutral-400">
+              {title}
+            </p>
+          )}
           <button
-            className="text-[30px] p-1 rounded-full hover:bg-gray-300 transition"
+            className="text-[30px] p-1 rounded-full hover:bg-neutral-900 text-antique-gold transition"
             onClick={() => setIsOpen(false)}
           >
             <RiCloseFill />
           </button>
         </div>
-        {children}
+        <div className="max-h-[80vh] overflow-auto hide-scroll">{children}</div>
       </div>
     </div>
   );

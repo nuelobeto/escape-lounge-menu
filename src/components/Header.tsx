@@ -50,17 +50,17 @@ const Header = ({ subCategories }: HeaderProps) => {
   return (
     <>
       <header className="w-full">
-        <nav className="h-[100px] bg-sky-700 flex items-center justify-between relative text-white px-4">
+        <nav className="h-[100px] bg-black flex items-center justify-between relative text-antique-gold px-4">
           {isHomePage ? (
             <button
-              className="text-[25px] p-2 rounded-full hover:bg-sky-800 transition"
+              className="text-[25px] p-2 rounded-full hover:bg-neutral-900 transition"
               onClick={() => setOpenSidebar(true)}
             >
               <RiMenuFill />
             </button>
           ) : (
             <button
-              className="text-[25px] p-2 rounded-full hover:bg-sky-800 transition"
+              className="text-[25px] p-2 rounded-full hover:bg-neutral-900 transition"
               onClick={handleBackToHome}
             >
               <RiArrowLeftLine />
@@ -73,7 +73,7 @@ const Header = ({ subCategories }: HeaderProps) => {
           </div>
           {!isHomePage && (
             <button
-              className="text-[25px] p-2 rounded-full hover:bg-sky-800 transition"
+              className="text-[25px] p-2 rounded-full hover:bg-neutral-900 transition"
               onClick={() => setOpenSearchBar(!openSearchBar)}
             >
               <RiSearchLine />
@@ -82,28 +82,28 @@ const Header = ({ subCategories }: HeaderProps) => {
         </nav>
 
         {openSearchBar && (
-          <div className="py-4 px-6 bg-gray-100 border-b">
+          <div className="py-4 px-6 bg-neutral-950">
             <input
               type="text"
               placeholder="Search..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full border border-gray-200 rounded-lg outline-none h-[44px] pl-4 text-[15px] bg-white"
+              className="w-full border border-neutral-800 rounded-lg outline-none h-[44px] pl-4 text-[15px] text-neutral-400 bg-black placeholder:text-neutral-600"
             />
           </div>
         )}
 
         {subCategories && (
-          <div className="px-6 py-4 bg-gray-100 flex items-center gap-3 border-b-[5px] border-gray-200 overflow-x-auto hide-scroll">
+          <div className="px-6 py-4 bg-black flex items-center gap-3 border-b-[5px] overflow-x-auto hide-scroll border-t-2 border-neutral-950">
             {subCategories.map((subCategory, index) => (
               <a
                 key={index}
                 id={`${subCategory}-link`}
                 href={`#${subCategory}`}
-                className={`cat-link min-w-fit py-1 px-4 rounded-lg font-semibold border border-sky-700 ${
+                className={`cat-link min-w-fit py-1 px-4 rounded-lg font-semibold border border-antique-gold ${
                   activeSubCategory === subCategory
-                    ? "bg-sky-700 text-white"
-                    : "bg-none text-sky-700"
+                    ? "bg-antique-gold text-black"
+                    : "bg-none text-antique-gold"
                 }`}
                 onClick={() => setActiveCategory(subCategory)}
               >

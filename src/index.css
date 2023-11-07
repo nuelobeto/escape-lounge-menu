@@ -9,6 +9,10 @@
   scroll-behavior: smooth;
 }
 
+body {
+  background-color: #080808;
+}
+
 .bg-illustration::before {
   content: "";
   background-image: url("./assets/bg-illustration.svg");

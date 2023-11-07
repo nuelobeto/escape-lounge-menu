@@ -12,14 +12,16 @@ const Sidebar = ({ openSidebar, setOpenSidebar }: SidebarProps) => {
     <Drawer isOpen={openSidebar} setIsOpen={setOpenSidebar}>
       <div className="w-full h-full flex items-end py-12 px-6">
         <div className="flex flex-col gap-4">
-          <h3 className="font-bold text-[18px]">Get in touch</h3>
+          <h3 className="font-bold text-[18px] text-neutral-300">
+            Get in touch
+          </h3>
 
-          <p className="flex items-center gap-2 cursor-pointer text-[15px] text-gray-600">
+          <p className="flex items-center gap-2 cursor-pointer text-[15px] text-neutral-400">
             <MdLocationOn className="text-[30px] text-red-600" />
             35 Ugbor Road, GRA, Benin City, Nigeria.
           </p>
 
-          <p className="flex items-center gap-2 cursor-pointer text-[15px] text-gray-600">
+          <p className="flex items-center gap-2 cursor-pointer text-[15px] text-neutral-400">
             <MdLocalPhone className="text-[25px] text-green-600" />
             +234 813 409 992
           </p>
@@ -35,7 +37,7 @@ const Sidebar = ({ openSidebar, setOpenSidebar }: SidebarProps) => {
             <a
               href="mailto:info@theescape.ng"
               target="_blank"
-              className="text-[30px]"
+              className="text-[30px] text-neutral-400"
             >
               <MdEmail />
             </a>

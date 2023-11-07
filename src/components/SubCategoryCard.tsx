@@ -57,18 +57,20 @@ const SubCategoryCard = ({ subCategory }: SubCategoryCardProps) => {
         className="sub-category flex flex-col gap-6 cursor-pointer"
         ref={elementRef}
       >
-        <h2 className="text-center p-1 rounded-lg bg-sky-700/10 text-[20px] font-bold text-sky-700">
+        <h2 className="text-center p-1 rounded-lg bg-antique-gold/10 text-[20px] font-bold text-antique-gold">
           {heading[0].toUpperCase()}
         </h2>
         {subCategory.map((item, index) => (
           <div
             key={index}
-            className="flex flex-col gap-1 border-b border-gray-3a00 pb-4"
+            className="flex flex-col gap-1 border-b border-neutral-600 pb-4"
             onClick={() => handleSelectItem(item)}
           >
-            <h3 className="font-bold">{item.title.toUpperCase()}</h3>
-            <p className="text-[14px] text-gray-600">{item.description}</p>
-            <p className="text-sky-700 text-[15px]">
+            <h3 className="font-bold text-neutral-300">
+              {item.title.toUpperCase()}
+            </h3>
+            <p className="text-[14px] text-neutral-400">{item.description}</p>
+            <p className="text-antique-gold text-[15px]">
               ${Number(item.price).toFixed(2)}
             </p>
           </div>

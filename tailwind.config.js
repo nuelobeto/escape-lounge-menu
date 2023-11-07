@@ -3,7 +3,11 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
-      colors: {},
+      colors: {
+        "rich-gold": "#FFD700",
+        "charcoal-black": "#333333",
+        "antique-gold": "#c49b63",
+      },
       screens: {
         xs: "480px",
       },

@@ -19,13 +19,13 @@ const Drawer = ({ children, isOpen, setIsOpen }: DrawerProps) => {
       onClick={() => setIsOpen(false)}
     >
       <div
-        className={`relative max-w-[400px] w-full h-full bg-white transition duration-[0.4s] ${
+        className={`relative max-w-[400px] w-full h-full bg-neutral-950 transition duration-[0.4s] ${
           isOpen ? " translate-x-0" : "t translate-x-[-100%]"
         }`}
         onClick={(e) => handlePropagation(e)}
       >
         <button
-          className="absolute top-6 right-6 text-[30px] p-1 rounded-full hover:bg-gray-300 transition"
+          className="absolute top-6 right-6 text-[30px] p-1 rounded-full hover:bg-neutral-900 text-antique-gold transition"
           onClick={() => setIsOpen(false)}
         >
           <RiCloseFill />
