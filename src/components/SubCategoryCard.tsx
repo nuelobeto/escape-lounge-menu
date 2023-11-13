@@ -1,15 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 import MenuModal from "./MenuModal";
-import { MenuItemT, SubCategoryT } from "../types/types";
+import { MenuItemT } from "../types/types";
 import useGlobalStates from "../store/useGlobalStates";
 
 type SubCategoryCardProps = {
-  subCategory: SubCategoryT[];
+  subCategory: MenuItemT[];
 };
 
 const SubCategoryCard = ({ subCategory }: SubCategoryCardProps) => {
   const { setActiveCategory } = useGlobalStates((state) => state);
-  const heading = [...new Set(subCategory.map((item) => item.subCategory))];
+  const heading = [
+    ...new Set(subCategory.map((item) => item.item_subcategory)),
+  ];
   const [openMenuModal, setOpenMenuModal] = useState(false);
   const [item, setItem] = useState<MenuItemT | null>(null);
   const elementRef = useRef<HTMLDivElement | null>(null);
@@ -36,7 +38,7 @@ const SubCategoryCard = ({ subCategory }: SubCategoryCardProps) => {
     const options: IntersectionObserverInit = {
       root: null,
       rootMargin: "0px",
-      threshold: 0.5,
+      threshold: 0.8,
     };
 
     const observer = new IntersectionObserver(handleIntersection, options);
@@ -67,11 +69,13 @@ const SubCategoryCard = ({ subCategory }: SubCategoryCardProps) => {
             onClick={() => handleSelectItem(item)}
           >
             <h3 className="font-bold text-neutral-300">
-              {item.title.toUpperCase()}
+              {item.item_name.toUpperCase()}
             </h3>
-            <p className="text-[14px] text-neutral-400">{item.description}</p>
+            <p className="text-[14px] text-neutral-400">
+              {item.item_description}
+            </p>
             <p className="text-antique-gold text-[15px]">
-              ₦{Number(item.price).toFixed(2)}
+              ₦{Number(item.item_amount).toFixed(2)}
             </p>
           </div>
         ))}

@@ -1,13 +1,9 @@
 export type MenuItemT = {
-  title: string;
-  description: string;
-  price: string;
-};
-
-export type SubCategoryT = {
-  category: string;
-  subCategory: string;
-  title: string;
-  description: string;
-  price: string;
+  id: string;
+  item_amount: string;
+  item_category: string;
+  item_description: string;
+  item_image: string;
+  item_name: string;
+  item_subcategory: string;
 };

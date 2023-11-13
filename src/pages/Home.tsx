@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import { ROUTES } from "../app-navigation/routes";
-import { MENU } from "../data/menu";
 import FoodMenuIcon from "../assets/food-menu-icon.svg";
 import BeverageMenuIcon from "../assets/beverage-icon.svg";
 import CocktailMenuIcon from "../assets/cocktail-icon.svg";
@@ -13,22 +12,24 @@ import FeedbackIcon from "../assets/feedback-icon.svg";
 import Curve from "../components/svg/Curve";
 import { useState } from "react";
 import FeedbackModal from "../components/FeedbackModal";
+import useMenu from "../store/useMenu";
 
 const Home = () => {
-  const categories = [...new Set(MENU.map((item) => item.category))];
+  const { menu } = useMenu((state) => state);
+  const categories = [...new Set(menu.map((item) => item.item_category))];
   const navigate = useNavigate();
   const [openFeedbackModal, setOpenFeedbackModal] = useState(false);
 
   const getIcon = (category: string) => {
-    return category === "Food Menu"
+    return category === "Food"
       ? FoodMenuIcon
-      : category === "Beverages Menu"
+      : category === "Beverages"
       ? BeverageMenuIcon
-      : category === "Cocktails Menu"
+      : category === "Cocktails"
       ? CocktailMenuIcon
-      : category === "Mocktails Menu"
+      : category === "Mocktails"
       ? MocktailMenuIcon
-      : category === "Wine Menu"
+      : category === "Wine"
       ? WineMenuIcon
       : "";
   };

@@ -16,11 +16,11 @@ const MenuModal = ({
     <ModalWrapper isOpen={openMenuModal} setIsOpen={setOpenMenuModal}>
       <div className="p-6 flex flex-col gap-2">
         <h3 className="font-bold text-neutral-300">
-          {item?.title.toUpperCase()}
+          {item?.item_name.toUpperCase()}
         </h3>
-        <p className="text-[14px] text-neutral-400">{item?.description}</p>
+        <p className="text-[14px] text-neutral-400">{item?.item_description}</p>
         <p className="text-antique-gold text-[15px]">
-          ₦{Number(item?.price).toFixed(2)}
+          ₦{Number(item?.item_amount).toFixed(2)}
         </p>
       </div>
     </ModalWrapper>

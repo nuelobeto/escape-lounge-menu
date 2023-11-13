@@ -1,28 +1,29 @@
 import { useParams } from "react-router-dom";
 import Header from "../components/Header";
-import { MENU } from "../data/menu";
 import SubCategoryCard from "../components/SubCategoryCard";
 import useGlobalStates from "../store/useGlobalStates";
+import useMenu from "../store/useMenu";
 
 const Category = () => {
+  const { menu } = useMenu((state) => state);
   const { openSearchBar, searchQuery } = useGlobalStates((state) => state);
   const query = searchQuery.toLowerCase();
   const params = useParams();
   const slug = params.slug;
-  const category = MENU.filter((item) => item.category === slug);
+  const category = menu.filter((item) => item.item_category === slug);
   const subCategoryHeadings = [
-    ...new Set(category.map((item) => item.subCategory)),
+    ...new Set(category.map((item) => item.item_subcategory)),
   ];
   const subCategories = subCategoryHeadings.map((x) =>
-    category.filter((y) => y.subCategory === x)
+    category.filter((y) => y.item_subcategory === x)
   );
   const filtered = subCategories
     .map((subcat) =>
       subcat.filter(
         (item) =>
-          item.subCategory.toLowerCase().includes(query) ||
-          item.title.toLowerCase().includes(query) ||
-          item.description.toLowerCase().includes(query)
+          item.item_subcategory.toLowerCase().includes(query) ||
+          item.item_name.toLowerCase().includes(query) ||
+          item.item_description.toLowerCase().includes(query)
       )
     )
     .filter((subArray) => subArray.length > 0);
