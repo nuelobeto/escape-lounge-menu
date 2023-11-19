@@ -2,10 +2,10 @@
 
   RewriteEngine On
   RewriteBase /
-  RewriteRule ^/dist/index\.html$ - [L]
+  RewriteRule ^index\.html$ - [L]
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_FILENAME} !-l
-  RewriteRule . /dist/index.html [L]
+  RewriteRule . /index.html [L]
 
 </IfModule>
