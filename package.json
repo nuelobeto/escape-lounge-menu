@@ -1,6 +1,7 @@
 {
   "name": "escape-lounge-menu",
   "private": true,
+  "homepage": "http://app.menupro.co",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
