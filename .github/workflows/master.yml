@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - develop
+      - master
     paths-ignore:
       - '**/public/uploads'
 name: 🚀 Deploying to menupro - develop deployment
