@@ -4,7 +4,7 @@ on:
       - master
     paths-ignore:
       - '**/public/uploads'
-name: 🚀 Deploying to menupro - develop deployment
+name: 🚀 Deploying to menupro - master deployment
 
 jobs:
   web-deploy:
