@@ -8,6 +8,7 @@ import MocktailMenuIcon from "../assets/mocktail-icon.svg";
 import WineMenuIcon from "../assets/wine-icon.svg";
 import InstagramIcon from "../assets/instagram-icon.svg";
 import FeedbackIcon from "../assets/feedback-icon.svg";
+import GenericMenuIcon from "../assets/GenericMenuIcon.svg";
 
 import Curve from "../components/svg/Curve";
 import { useState } from "react";
@@ -31,7 +32,7 @@ const Home = () => {
       ? MocktailMenuIcon
       : category === "Wine"
       ? WineMenuIcon
-      : "";
+      : GenericMenuIcon;
   };
 
   return (
