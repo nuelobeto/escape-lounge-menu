@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - master
+      - main
     paths-ignore:
       - '**/public/uploads'
 name: 🚀 Deploying to menupro - master deployment
@@ -31,4 +31,3 @@ jobs:
           server: ftp.menupro.co
           username: ${{ secrets.ftp_username }}
           password: ${{ secrets.ftp_password }}
- 
