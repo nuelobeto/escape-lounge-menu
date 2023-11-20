@@ -5,6 +5,7 @@ import { capitalizeFirstLetter } from "../utils/strings";
 
 type MenuState = {
   menu: MenuItemT[];
+  menu_details: any;
   getMenu: (menuId: string) => void;
   loading: boolean;
 };
@@ -12,12 +13,13 @@ type MenuState = {
 const useMenu = create<MenuState>((set) => ({
   menu: [],
   loading: false,
+  menu_details: null,
 
   getMenu: async (menuId: string) => {
     set((state) => ({ loading: (state.loading = true) }));
     try {
       const menu = await menuServices.getMenu(menuId);
-      const clean_menu = menu.map((item: MenuItemT) => {
+      const clean_menu = menu.menu_items.map((item: MenuItemT) => {
         return {
           id: item.id,
           item_amount: item.item_amount,
@@ -28,6 +30,7 @@ const useMenu = create<MenuState>((set) => ({
           item_subcategory: capitalizeFirstLetter(item.item_subcategory),
         };
       });
+      set((state) => ({ menu_details: (state.menu_details = menu) }));
       set((state) => ({ menu: (state.menu = clean_menu) }));
       set((state) => ({ loading: (state.loading = false) }));
     } catch (error) {

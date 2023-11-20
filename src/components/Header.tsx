@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { ROUTES } from "../app-navigation/routes";
 import useGlobalStates from "../store/useGlobalStates";
 import Sidebar from "./Sidebar";
+import useMenu from "../store/useMenu";
 
 type HeaderProps = {
   subCategories?: string[];
@@ -18,6 +19,7 @@ const Header = ({ subCategories }: HeaderProps) => {
     searchQuery,
     setSearchQuery,
   } = useGlobalStates((state) => state);
+  const { menu_details } = useMenu((state) => state);
   const { pathname } = useLocation();
   const isHomePage = pathname === ROUTES.home && true;
   const navigate = useNavigate();
@@ -67,9 +69,7 @@ const Header = ({ subCategories }: HeaderProps) => {
             </button>
           )}
           <div className="absolute left-[50%] translate-x-[-50%] leading-[1] text-[22px] xs:text-[30px] font-black text-center">
-            <h1>
-              Escape <br /> Lounge
-            </h1>
+            <h1>{menu_details?.menu_name}</h1>
           </div>
           {!isHomePage && (
             <button

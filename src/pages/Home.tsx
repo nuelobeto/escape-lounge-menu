@@ -16,7 +16,7 @@ import FeedbackModal from "../components/FeedbackModal";
 import useMenu from "../store/useMenu";
 
 const Home = () => {
-  const { menu } = useMenu((state) => state);
+  const { menu, menu_details } = useMenu((state) => state);
   const categories = [...new Set(menu.map((item) => item.item_category))];
   const navigate = useNavigate();
   const [openFeedbackModal, setOpenFeedbackModal] = useState(false);
@@ -61,7 +61,7 @@ const Home = () => {
               </div>
             ))}
             <a
-              href="https://www.instagram.com/theescape.ng/?hl=en"
+              href={menu_details.instagram_link}
               target="_blank"
               className="max-w-[250px] w-full flex flex-col gap-3 hover:cursor-pointer"
             >
