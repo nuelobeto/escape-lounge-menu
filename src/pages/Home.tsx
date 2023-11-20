@@ -61,7 +61,9 @@ const Home = () => {
               </div>
             ))}
             <a
-              href={menu_details.instagram_link}
+              href={
+                menu_details?.instagram_link ? menu_details?.instagram_link : ""
+              }
               target="_blank"
               className="max-w-[250px] w-full flex flex-col gap-3 hover:cursor-pointer"
             >

@@ -32,45 +32,45 @@ const Sidebar = ({ openSidebar, setOpenSidebar }: SidebarProps) => {
           </p>
 
           <div className="flex items-center gap-4">
-            {menu_details.instagram_link && (
+            {menu_details?.instagram_link && (
               <a
-                href={menu_details.instagram_link}
+                href={menu_details?.instagram_link}
                 target="_blank"
                 className="text-[25px]"
               >
                 <img src={InstagramImg} width={25} alt="" />
               </a>
             )}
-            {menu_details.email && (
+            {menu_details?.email && (
               <a
-                href={menu_details.email}
+                href={menu_details?.email}
                 target="_blank"
                 className="text-[30px] text-neutral-400"
               >
                 <MdEmail />
               </a>
             )}
-            {menu_details.facebook && (
+            {menu_details?.facebook && (
               <a
-                href={menu_details.facebook}
+                href={menu_details?.facebook}
                 target="_blank"
                 className="text-[25px]"
               >
                 <img src={FacebookImg} width={25} alt="" />
               </a>
             )}
-            {menu_details.twitter && (
+            {menu_details?.twitter && (
               <a
-                href={menu_details.twitter}
+                href={menu_details?.twitter}
                 target="_blank"
                 className="text-[25px]"
               >
                 <img src={TwitterImg} width={25} alt="" />
               </a>
             )}
-            {menu_details.tiktok && (
+            {menu_details?.tiktok && (
               <a
-                href={menu_details.tiktok}
+                href={menu_details?.tiktok}
                 target="_blank"
                 className="text-[25px]"
               >
