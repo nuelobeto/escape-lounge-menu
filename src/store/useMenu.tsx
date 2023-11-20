@@ -5,7 +5,7 @@ import { capitalizeFirstLetter } from "../utils/strings";
 
 type MenuState = {
   menu: MenuItemT[];
-  getMenu: () => void;
+  getMenu: (menuId: string) => void;
   loading: boolean;
 };
 
@@ -13,10 +13,10 @@ const useMenu = create<MenuState>((set) => ({
   menu: [],
   loading: false,
 
-  getMenu: async () => {
+  getMenu: async (menuId: string) => {
     set((state) => ({ loading: (state.loading = true) }));
     try {
-      const menu = await menuServices.getMenu();
+      const menu = await menuServices.getMenu(menuId);
       const clean_menu = menu.map((item: MenuItemT) => {
         return {
           id: item.id,

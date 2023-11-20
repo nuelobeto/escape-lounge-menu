@@ -21,9 +21,11 @@ const Category = () => {
     .map((subcat) =>
       subcat.filter(
         (item) =>
-          item.item_subcategory.toLowerCase().includes(query) ||
-          item.item_name.toLowerCase().includes(query) ||
-          item.item_description.toLowerCase().includes(query)
+          (item.item_subcategory &&
+            item.item_subcategory.toLowerCase().includes(query)) ||
+          (item.item_name && item.item_name.toLowerCase().includes(query)) ||
+          (item.item_description &&
+            item.item_description.toLowerCase().includes(query))
       )
     )
     .filter((subArray) => subArray.length > 0);
