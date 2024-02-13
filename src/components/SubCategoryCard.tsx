@@ -75,7 +75,8 @@ const SubCategoryCard = ({ subCategory }: SubCategoryCardProps) => {
 							</p>
 						</div>
 						<p className="text-antique-gold text-[15px]">
-							₦{Number(item.item_amount).toFixed(2)}
+							<span className="text-[12px]">₦</span>
+							{Number(item.item_amount).toFixed(2)}
 						</p>
 					</div>
 				))}
