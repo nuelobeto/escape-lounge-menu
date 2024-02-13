@@ -1,1 +1,1 @@
-export const BASE_URL = "https://menupro.co/api/menu?menu=escape";
+export const BASE_URL = "https://menupro.co/api/menu?";

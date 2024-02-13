@@ -8,6 +8,7 @@ import MocktailMenuIcon from "../assets/mocktail-icon.svg";
 import WineMenuIcon from "../assets/wine-icon.svg";
 import InstagramIcon from "../assets/instagram-icon.svg";
 import FeedbackIcon from "../assets/feedback-icon.svg";
+import GenericMenuIcon from "../assets/GenericMenuIcon.svg";
 
 import Curve from "../components/svg/Curve";
 import { useState } from "react";
@@ -15,7 +16,7 @@ import FeedbackModal from "../components/FeedbackModal";
 import useMenu from "../store/useMenu";
 
 const Home = () => {
-  const { menu } = useMenu((state) => state);
+  const { menu, menu_details } = useMenu((state) => state);
   const categories = [...new Set(menu.map((item) => item.item_category))];
   const navigate = useNavigate();
   const [openFeedbackModal, setOpenFeedbackModal] = useState(false);
@@ -31,7 +32,7 @@ const Home = () => {
       ? MocktailMenuIcon
       : category === "Wine"
       ? WineMenuIcon
-      : "";
+      : GenericMenuIcon;
   };
 
   return (
@@ -60,7 +61,9 @@ const Home = () => {
               </div>
             ))}
             <a
-              href="https://www.instagram.com/theescape.ng/?hl=en"
+              href={
+                menu_details?.instagram_link ? menu_details?.instagram_link : ""
+              }
               target="_blank"
               className="max-w-[250px] w-full flex flex-col gap-3 hover:cursor-pointer"
             >

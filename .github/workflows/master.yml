@@ -1,0 +1,36 @@
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**/public/uploads'
+name: 🚀 Deploying to menupro frontend - master deployment
+
+jobs:
+  web-deploy:
+    name: Deploying...
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build React app
+        run: npm run build
+
+      - name: Copy .htaccess to the build directory
+        run: cp .htaccess dist/
+
+      - name: Sync files to cPanel
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        with:
+          server: ftp.menupro.co
+          username: ${{ secrets.ftp_username }}
+          password: ${{ secrets.ftp_password }}
