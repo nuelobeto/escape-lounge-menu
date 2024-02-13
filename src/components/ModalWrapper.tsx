@@ -19,7 +19,7 @@ const ModalWrapper = ({
 
 	return (
 		<div
-			className={`fixed w-full max-w-[800px] h-screen top-0 left-[50%] translate-x-[-50%] z-10 transition duration-300 ${
+			className={`fixed w-full max-w-[800px]  h-screen top-0 left-[50%] translate-x-[-50%] z-10 transition duration-300 ${
 				isOpen ? "bg-[#0000009d]" : "pointer-events-none"
 			}`}
 			onClick={() => setIsOpen(false)}>
