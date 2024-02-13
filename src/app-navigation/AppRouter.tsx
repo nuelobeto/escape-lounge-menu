@@ -7,7 +7,7 @@ import useMenu from "../store/useMenu";
 import { useEffect } from "react";
 
 const AppRouter = () => {
-	const { getMenu, loading } = useMenu((state) => state);
+	const { menu, getMenu, loading } = useMenu((state) => state);
 	const location = useLocation();
 	const menuId = new URLSearchParams(location.search).get("id");
 	const savedId: string | null = localStorage.getItem("menu_id");
@@ -22,13 +22,17 @@ const AppRouter = () => {
 	}, [menuId]);
 
 	useEffect(() => {
-		if (menuId) {
-			getMenu(menuId);
+		if (menu.length === 0) {
+			if (menuId) {
+				getMenu(menuId);
+			}
+			if (parsedMenuId) {
+				getMenu(parsedMenuId);
+			}
 		}
-		if (parsedMenuId) {
-			getMenu(parsedMenuId);
-		}
-	}, [menuId, parsedMenuId, getMenu]);
+	}, [menu, menuId, parsedMenuId, getMenu]);
+
+	console.log(menu);
 
 	return (
 		<div className="relative max-w-[800px] w-full h-screen m-auto bg-illustration">
